@@ -1,5 +1,0 @@
-LDAP stands for Lightweight Directory Access Protocol. One of the uses is to store your credentials in a network security system and retrieve it with your password and decrypted key giving you access to the services.
- 
-Users can integrate LDAP with NiFi to enable Username/password Login authentication from the Nifi UI.
- 
-In this Stage we will look into the configuration settings and how to Map the LdapSearch output to the login-identity providers settings 
