@@ -1,3 +1,6 @@
+# Configuring Nifi with Ldap User Sync for Authentication
+
+## What is Ldap?
 LDAP stands for Lightweight Directory Access Protocol. One of the uses is to store your credentials in a network security system and retrieve it with your password and decrypted key giving you access to the services.
  
 Users can integrate LDAP with NiFi to enable Username/password Login authentication from the Nifi UI.
@@ -5,18 +8,20 @@ Users can integrate LDAP with NiFi to enable Username/password Login authenticat
 In this Stage we will look into the configuration settings and how to Map the LdapSearch output to the login-identity providers settings 
 
 
-Configuration pre-requisites:
+##Configuration pre-requisites:
  
-	1. NFI Secured via SSL 
-	• For Nifi LDAP Authentication to be  configured, SSL must be enabled on the cluster.
-	• Check page for SSL setup for Nifi
+	⋅⋅* NFI Secured via SSL 
+	⋅⋅* For Nifi LDAP Authentication to be  configured, SSL must be enabled on the cluster.
+	⋅⋅* Check page for SSL setup for Nifi
 
-Configuration Validation :
+##Configuration Validation :
 	1. Check property is set to 
 nifi.security.user.login.identity.provider=ldap-provider
  
-2. Configure Ldap info in login-identity-providers setting
-<provider>
+        2. Configure Ldap info in login-identity-providers setting
+        
+	```markdown
+	 <provider>
          <identifier>ldap-provider</identifier>
          <class>org.apache.nifi.ldap.LdapProvider</class>
          <property name="Authentication Strategy">SIMPLE</property>
@@ -40,7 +45,7 @@ nifi.security.user.login.identity.provider=ldap-provider
          <property name="Identity Strategy">USE_DN</property>
          <property name="Authentication Expiration">12 hours</property>
      </provider>
- 
+ ```
  
  | Authentication Expiration | -- The duration of how long the user authentication is valid for. If the user never logs out, they will be required to log back in following this duration.
 | Authentication Strategy | -- How the connection to the LDAP server is authenticated. Possible values are ANONYMOUS, SIMPLE, LDAPS, or START_TLS.
