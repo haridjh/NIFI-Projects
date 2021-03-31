@@ -84,34 +84,35 @@ Command :
 > ldapsearch  -h 000.11.111.00 -p 389 -D "cn=manager,dc=charan,dc=com" -w password -b dc=charan,dc=com  
 
 Output :
-`# sai, People, charan.com
-dn: uid=sai,ou=People,dc=charan,dc=com
-shadowWarning: 0
-uid: sai
-uidNumber: 10005
-gecos: sai
-shadowLastChange: 0
-homeDirectory: /home/sai
-gidNumber: 500
-shadowMax: 0
-cn: sai
-objectClass: shadowAccount
-objectClass: posixAccount
-objectClass: account
-objectClass: toplogin
-Shell: /bin/bash
-userPassword:: YWRtaW4= 
-` 
 
-##How to map the objects : 
+	# sai, People, charan.com
+	dn: uid=sai,ou=People,dc=charan,dc=com
+	shadowWarning: 0
+	uid: sai
+	uidNumber: 10005
+	gecos: sai
+	shadowLastChange: 0
+	homeDirectory: /home/sai
+	gidNumber: 500
+	shadowMax: 0
+	cn: sai
+	objectClass: shadowAccount
+	objectClass: posixAccount
+	objectClass: account
+	objectClass: toplogin
+	Shell: /bin/bash
+	userPassword:: YWRtaW4= 
+
+
+## How to map the objects : 
  
-###Manager DN:
+### Manager DN:
 It is the Bind DN of the ldap, which needs to be obtained from the ldap Configuration and it is the one with which you can run the ldapserach command.
  
-###User Search Base:
+### User Search Base:
 In the baseDN of the ldap hierarchy under which the user will exists . You can relate this from the -b option of you ldapsearch command 
  
-###User Search Filter:
+### User Search Filter:
 This is to options present to determine is the user is present within the baseDN .
 For Example : we have the baseDN as "dc=charan,dc=com", there are can N # of users, and to filter just the users, we use the UID attribute as the filter option, to identity the users., which is set as "uid={0}" in the configuration and it equals to "uid: sai", when user "sai" is logged-in
  
@@ -122,17 +123,17 @@ When you AD with ldap, you will mostly come across "sAMAcountName" as the user s
 If the Customer needs to have the User search based on the a LDAP group, then the "User Search Filter" property can be set as below. 
 In the below example, the User will be searched in LDAP group1 and group2 . You can assign required permission via Ranger or File-Based Authorizations for the groups, which will be in effect for the users that belong to the group.
  
-###Example :
+### Example :
 ```html
 <property name="User Search Filter">(|(memberOf=CN=group1,OU=Groups,OU=BigData,DC=EXAMPLE,DC=COM)(memberOf=CN=group2,OU=Groups,OU=BigData,DC=EXAMPLE,DC=COM))</property>
  ```
  
-##Files Affected :
+## Files Affected :
 	1. nifi.properties 
 	2. login-identity-providers.xml
 	3. users.xml 
  
-Troubleshooting Info needed :
+## Troubleshooting Info needed :
 	1. Config Files : nifi.properties , login-identity-providers.xml, users.xml 
 	2. Ldapsearch command output
 	3. nifi-users.log and the nifi-app.log
