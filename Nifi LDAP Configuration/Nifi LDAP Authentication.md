@@ -60,7 +60,7 @@ The Rest of the TLS parameters are mentioned when connecting to LDAP via LDAPS o
  
  
 Sample :
-	```html
+	
 	<provider>        
 	<identifier>ldap-provider</identifier>        
 	<class>org.apache.nifi.ldap.LdapProvider</class>       
@@ -76,7 +76,7 @@ Sample :
 	<property name="Identity Strategy">USE_USERNAME</property>         
 	<property name="Authentication Expiration">12 hours</property>    
 	</provider>
-	```
+	
 
 LDAP Search Output :
 
@@ -84,7 +84,7 @@ Command :
 > ldapsearch  -h 000.11.111.00 -p 389 -D "cn=manager,dc=charan,dc=com" -w password -b dc=charan,dc=com  
 
 Output :
-# sai, People, charan.com
+`# sai, People, charan.com
 dn: uid=sai,ou=People,dc=charan,dc=com
 shadowWarning: 0
 uid: sai
@@ -101,7 +101,7 @@ objectClass: account
 objectClass: toplogin
 Shell: /bin/bash
 userPassword:: YWRtaW4= 
- 
+` 
 
 ##How to map the objects : 
  
