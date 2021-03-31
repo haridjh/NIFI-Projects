@@ -48,13 +48,25 @@ In this Stage we will look into the configuration settings and how to Map the Ld
      </provider>
 
  
- | Authentication Expiration | -- The duration of how long the user authentication is valid for. If the user never logs out, they will be required to log back in following this duration.
-| Authentication Strategy | -- How the connection to the LDAP server is authenticated. Possible values are ANONYMOUS, SIMPLE, LDAPS, or START_TLS.
-| Manager DN | -- The DN of the manager that is used to bind to the LDAP server to search for users.
-| Manager Password | -- The password of the manager that is used to bind to the LDAP server to search for users.
-| User Search Base | -- Base DN for searching for users (i.e. CN=Users,DC=example,DC=com).
- | User Search Filter | -- Filter for searching for users against the 'User Search Base'. (i.e. sAMAccountName={0}). The user specified name is inserted into '{0}'.
-| Identity Strategy | -- Strategy to identify users. Possible values are USE_DN and USE_USERNAME. The default functionality if this property is missing is USE_DN in order to retain backward compatibility. USE_DN will use the full DN of the user entry if possible. USE_USERNAME will use the username the user logged in with.
+ ### Authentication Expiration 
+   -- The duration of how long the user authentication is valid for. If the user never logs out, they will be required to log back in following this duration.
+
+### Authentication Strategy 
+   -- How the connection to the LDAP server is authenticated. Possible values are ANONYMOUS, SIMPLE, LDAPS, or START_TLS.
+
+### Manager DN 
+   -- The DN of the manager that is used to bind to the LDAP server to search for users.
+
+### Manager Password 
+   -- The password of the manager that is used to bind to the LDAP server to search for users.
+
+### User Search Base | -- Base DN for searching for users (i.e. CN=Users,DC=example,DC=com).
+ 
+ ### User Search Filter 
+   -- Filter for searching for users against the 'User Search Base'. (i.e. sAMAccountName={0}). The user specified name is inserted into '{0}'.
+
+### Identity Strategy 
+   -- Strategy to identify users. Possible values are USE_DN and USE_USERNAME. The default functionality if this property is missing is USE_DN in order to retain backward compatibility. USE_DN will use the full DN of the user entry if possible. USE_USERNAME will use the username the user logged in with.
  
 The Rest of the TLS parameters are mentioned when connecting to LDAP via LDAPS or START_TLS.  i.e , Authentication Strategy is set to LDAPS or START_TLS in the login-identity-providers setting file.
  
