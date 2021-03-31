@@ -14,6 +14,7 @@ In this Stage we will look into the configuration settings and how to Map the Ld
 	- For Nifi LDAP Authentication to be  configured, SSL must be enabled on the cluster.
 	- Check page for SSL setup for Nifi
 
+
 ## Configuration Validation
 
    1. Check property is set to 
@@ -90,6 +91,8 @@ Sample :
 	</provider>
 	
 
+
+
 ## LDAP Search Output :
 
 Command :
@@ -116,15 +119,17 @@ Output :
 	userPassword:: YWRtaW4= 
 
 
+
+
 ## How to map the objects : 
  
-### Manager DN:
+#### Manager DN:
  It is the Bind DN of the ldap, which needs to be obtained from the ldap Configuration and it is the one with which you can run the ldapserach command.
  
-### User Search Base:
+#### User Search Base:
  In the baseDN of the ldap hierarchy under which the user will exists . You can relate this from the -b option of you ldapsearch command 
  
-### User Search Filter:
+#### User Search Filter:
  This is to options present to determine is the user is present within the baseDN .
 For Example : we have the baseDN as "dc=charan,dc=com", there are can N # of users, and to filter just the users, we use the UID attribute as the filter option, to identity the users., which is set as "uid={0}" in the configuration and it equals to "uid: sai", when user "sai" is logged-in
  
@@ -140,10 +145,13 @@ In the below example, the User will be searched in LDAP group1 and group2 . You 
 	<property name="User Search Filter">(|(memberOf=CN=group1,OU=Groups,OU=BigData,DC=EXAMPLE,DC=COM)(memberOf=CN=group2,OU=Groups,OU=BigData,DC=EXAMPLE,DC=COM))</property>
 
  
+ 
 ### Files Affected :
 	1. nifi.properties 
 	2. login-identity-providers.xml
 	3. users.xml 
+ 
+ 
  
 ### Troubleshooting Info needed :
 	1. Config Files : nifi.properties , login-identity-providers.xml, users.xml 
