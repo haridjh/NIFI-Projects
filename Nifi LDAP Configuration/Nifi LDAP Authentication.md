@@ -8,13 +8,13 @@ Users can integrate LDAP with NiFi to enable Username/password Login authenticat
 In this Stage we will look into the configuration settings and how to Map the LdapSearch output to the login-identity providers settings 
 
 
-##Configuration pre-requisites:
+## Configuration pre-requisites:
  
 	- NFI Secured via SSL 
 	- For Nifi LDAP Authentication to be  configured, SSL must be enabled on the cluster.
 	- Check page for SSL setup for Nifi
 
-##Configuration Validation
+## Configuration Validation
 
    1. Check property is set to 
 	
