@@ -10,17 +10,18 @@ In this Stage we will look into the configuration settings and how to Map the Ld
 
 ##Configuration pre-requisites:
  
-	⋅⋅* NFI Secured via SSL 
-	⋅⋅* For Nifi LDAP Authentication to be  configured, SSL must be enabled on the cluster.
-	⋅⋅* Check page for SSL setup for Nifi
+	- NFI Secured via SSL 
+	- For Nifi LDAP Authentication to be  configured, SSL must be enabled on the cluster.
+	- Check page for SSL setup for Nifi
 
-##Configuration Validation :
-	1. Check property is set to 
-nifi.security.user.login.identity.provider=ldap-provider
+##Configuration Validation
+
+   1. Check property is set to 
+	
+     nifi.security.user.login.identity.provider=ldap-provider
  
-        2. Configure Ldap info in login-identity-providers setting
+   2. Configure Ldap info in login-identity-providers setting
         
-	```markdown
 	 <provider>
          <identifier>ldap-provider</identifier>
          <class>org.apache.nifi.ldap.LdapProvider</class>
@@ -45,7 +46,7 @@ nifi.security.user.login.identity.provider=ldap-provider
          <property name="Identity Strategy">USE_DN</property>
          <property name="Authentication Expiration">12 hours</property>
      </provider>
- ```
+
  
  | Authentication Expiration | -- The duration of how long the user authentication is valid for. If the user never logs out, they will be required to log back in following this duration.
 | Authentication Strategy | -- How the connection to the LDAP server is authenticated. Possible values are ANONYMOUS, SIMPLE, LDAPS, or START_TLS.
@@ -59,25 +60,29 @@ The Rest of the TLS parameters are mentioned when connecting to LDAP via LDAPS o
  
  
 Sample :
-<provider>        
-<identifier>ldap-provider</identifier>        
-<class>org.apache.nifi.ldap.LdapProvider</class>       
-<property name="Authentication Strategy">SIMPLE</property>         
-<property name="Manager DN">cn=admin,dc=example,dc=com</property>        
-<property name="Manager Password">password</property>         
-<property name="Referral Strategy">FOLLOW</property>        
-<property name="Connect Timeout">10 secs</property>        
-<property name="Read Timeout">10 secs</property>         
-<property name="Url">ldap://ldaphost:389</property>        
-<property name="User Search Base">dc=example,dc=com</property>        
-<property name="User Search Filter">(uid={0})</property>         
-<property name="Identity Strategy">USE_USERNAME</property>         
-<property name="Authentication Expiration">12 hours</property>    
-</provider>
+	```markd
+	<provider>        
+	<identifier>ldap-provider</identifier>        
+	<class>org.apache.nifi.ldap.LdapProvider</class>       
+	<property name="Authentication Strategy">SIMPLE</property>         
+	<property name="Manager DN">cn=admin,dc=example,dc=com</property>        
+	<property name="Manager Password">password</property>         
+	<property name="Referral Strategy">FOLLOW</property>        
+	<property name="Connect Timeout">10 secs</property>        
+	<property name="Read Timeout">10 secs</property>         
+	<property name="Url">ldap://ldaphost:389</property>        
+	<property name="User Search Base">dc=example,dc=com</property>        
+	<property name="User Search Filter">(uid={0})</property>         
+	<property name="Identity Strategy">USE_USERNAME</property>         
+	<property name="Authentication Expiration">12 hours</property>    
+	</provider>
+	```
 
 LDAP Search Output :
+
 Command :
 > ldapsearch  -h 000.11.111.00 -p 389 -D "cn=manager,dc=charan,dc=com" -w password -b dc=charan,dc=com  
+
 Output :
 # sai, People, charan.com
 dn: uid=sai,ou=People,dc=charan,dc=com
@@ -97,15 +102,16 @@ objectClass: toplogin
 Shell: /bin/bash
 userPassword:: YWRtaW4= 
  
-How to map the objects : 
+
+##How to map the objects : 
  
-Manager DN:
+###Manager DN:
 It is the Bind DN of the ldap, which needs to be obtained from the ldap Configuration and it is the one with which you can run the ldapserach command.
  
-User Search Base:
+###User Search Base:
 In the baseDN of the ldap hierarchy under which the user will exists . You can relate this from the -b option of you ldapsearch command 
  
-User Search Filter:
+###User Search Filter:
 This is to options present to determine is the user is present within the baseDN .
 For Example : we have the baseDN as "dc=charan,dc=com", there are can N # of users, and to filter just the users, we use the UID attribute as the filter option, to identity the users., which is set as "uid={0}" in the configuration and it equals to "uid: sai", when user "sai" is logged-in
  
@@ -116,11 +122,12 @@ When you AD with ldap, you will mostly come across "sAMAcountName" as the user s
 If the Customer needs to have the User search based on the a LDAP group, then the "User Search Filter" property can be set as below. 
 In the below example, the User will be searched in LDAP group1 and group2 . You can assign required permission via Ranger or File-Based Authorizations for the groups, which will be in effect for the users that belong to the group.
  
-Example :
+###Example :
+```mark
 <property name="User Search Filter">(|(memberOf=CN=group1,OU=Groups,OU=BigData,DC=EXAMPLE,DC=COM)(memberOf=CN=group2,OU=Groups,OU=BigData,DC=EXAMPLE,DC=COM))</property>
+ ```
  
- 
-Files Affected :
+##Files Affected :
 	1. nifi.properties 
 	2. login-identity-providers.xml
 	3. users.xml 
