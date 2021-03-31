@@ -49,24 +49,24 @@ In this Stage we will look into the configuration settings and how to Map the Ld
      </provider>
 
  
-### Authentication Expiration 
+#### Authentication Expiration 
  The duration of how long the user authentication is valid for. If the user never logs out, they will be required to log back in following this duration.
 
-### Authentication Strategy 
+#### Authentication Strategy 
  How the connection to the LDAP server is authenticated. Possible values are ANONYMOUS, SIMPLE, LDAPS, or START_TLS.
 
-### Manager DN 
+#### Manager DN 
  The DN of the manager that is used to bind to the LDAP server to search for users.
 
-### Manager Password 
+#### Manager Password 
  The password of the manager that is used to bind to the LDAP server to search for users.
 
-### User Search Base | -- Base DN for searching for users (i.e. CN=Users,DC=example,DC=com).
+#### User Search Base | -- Base DN for searching for users (i.e. CN=Users,DC=example,DC=com).
  
- ### User Search Filter 
+#### User Search Filter 
   Filter for searching for users against the 'User Search Base'. (i.e. sAMAccountName={0}). The user specified name is inserted into '{0}'.
 
-### Identity Strategy 
+#### Identity Strategy 
  Strategy to identify users. Possible values are USE_DN and USE_USERNAME. The default functionality if this property is missing is USE_DN in order to retain backward compatibility. USE_DN will use the full DN of the user entry if possible. USE_USERNAME will use the username the user logged in with.
  
 The Rest of the TLS parameters are mentioned when connecting to LDAP via LDAPS or START_TLS.  i.e , Authentication Strategy is set to LDAPS or START_TLS in the login-identity-providers setting file.
@@ -93,7 +93,7 @@ Sample :
 
 
 
-## LDAP Search Output :
+### LDAP Search Output :
 
 Command :
 > ldapsearch  -h 000.11.111.00 -p 389 -D "cn=manager,dc=charan,dc=com" -w password -b dc=charan,dc=com  
@@ -121,7 +121,7 @@ Output :
 
 
 
-## How to map the objects : 
+### How to map the objects : 
  
 #### Manager DN:
  It is the Bind DN of the ldap, which needs to be obtained from the ldap Configuration and it is the one with which you can run the ldapserach command.
