@@ -60,7 +60,7 @@ The Rest of the TLS parameters are mentioned when connecting to LDAP via LDAPS o
  
  
 Sample :
-	```
+	```xml
 	<provider>        
 	<identifier>ldap-provider</identifier>        
 	<class>org.apache.nifi.ldap.LdapProvider</class>       
