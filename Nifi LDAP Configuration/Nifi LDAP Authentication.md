@@ -90,7 +90,7 @@ Sample :
 	</provider>
 	
 
-LDAP Search Output :
+## LDAP Search Output :
 
 Command :
 > ldapsearch  -h 000.11.111.00 -p 389 -D "cn=manager,dc=charan,dc=com" -w password -b dc=charan,dc=com  
@@ -140,12 +140,12 @@ In the below example, the User will be searched in LDAP group1 and group2 . You 
 <property name="User Search Filter">(|(memberOf=CN=group1,OU=Groups,OU=BigData,DC=EXAMPLE,DC=COM)(memberOf=CN=group2,OU=Groups,OU=BigData,DC=EXAMPLE,DC=COM))</property>
  ```
  
-## Files Affected :
+### Files Affected :
 	1. nifi.properties 
 	2. login-identity-providers.xml
 	3. users.xml 
  
-## Troubleshooting Info needed :
+### Troubleshooting Info needed :
 	1. Config Files : nifi.properties , login-identity-providers.xml, users.xml 
 	2. Ldapsearch command output
 	3. nifi-users.log and the nifi-app.log
