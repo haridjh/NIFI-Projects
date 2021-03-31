@@ -60,7 +60,7 @@ The Rest of the TLS parameters are mentioned when connecting to LDAP via LDAPS o
  
  
 Sample :
-	```markd
+	```
 	<provider>        
 	<identifier>ldap-provider</identifier>        
 	<class>org.apache.nifi.ldap.LdapProvider</class>       
@@ -123,7 +123,7 @@ If the Customer needs to have the User search based on the a LDAP group, then th
 In the below example, the User will be searched in LDAP group1 and group2 . You can assign required permission via Ranger or File-Based Authorizations for the groups, which will be in effect for the users that belong to the group.
  
 ###Example :
-```mark
+```html
 <property name="User Search Filter">(|(memberOf=CN=group1,OU=Groups,OU=BigData,DC=EXAMPLE,DC=COM)(memberOf=CN=group2,OU=Groups,OU=BigData,DC=EXAMPLE,DC=COM))</property>
  ```
  
