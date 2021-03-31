@@ -119,7 +119,7 @@ Output :
 	userPassword:: YWRtaW4= 
 
 
-
+...
 
 ### How to map the objects : 
  
@@ -138,20 +138,20 @@ When you AD with ldap, you will mostly come across "sAMAcountName" as the user s
  
  
 If the Customer needs to have the User search based on the a LDAP group, then the "User Search Filter" property can be set as below. 
-In the below example, the User will be searched in LDAP group1 and group2 . You can assign required permission via Ranger or File-Based Authorizations for the groups, which will be in effect for the users that belong to the group.
+In the below example, the User will be searched in LDAP group1 and group2 . You can assign required permission via Ranger or File-Based Authorizations for the groups, which will be in effect for the users that belong to the group....
  
 ### Example :
 
 	<property name="User Search Filter">(|(memberOf=CN=group1,OU=Groups,OU=BigData,DC=EXAMPLE,DC=COM)(memberOf=CN=group2,OU=Groups,OU=BigData,DC=EXAMPLE,DC=COM))</property>
 
- 
+... 
  
 ### Files Affected :
 	1. nifi.properties 
 	2. login-identity-providers.xml
 	3. users.xml 
  
- 
+ ...
  
 ### Troubleshooting Info needed :
 	1. Config Files : nifi.properties , login-identity-providers.xml, users.xml 
