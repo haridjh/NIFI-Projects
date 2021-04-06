@@ -1,21 +1,21 @@
-#Steps to Add Ldap/AD groups for NIFI Authorisation
+# Steps to Add Ldap/AD groups for NIFI Authorisation
 
-##Prerequisites 
+## Prerequisites 
 
-###Step 1:  
+### Step 1:  
 NIFI must be Secured. Enable SSL and configure node identities and Initial Admin indemnity to login into secured NIFI
 
 Related Doc : https://docs.cloudera.com/HDPDocuments/HDF3/HDF-3.3.0/nifi-authentication/content/nifi_authentication.html
 
 
-###Step 2 : NIFI must be authenticated. use one of supported authentication mechanism such as Ldap/kerberos ..etc
+### Step 2 : NIFI must be authenticated. use one of supported authentication mechanism such as Ldap/kerberos ..etc
 
 Related doc : https://docs.cloudera.com/HDPDocuments/HDF3/HDF-3.2.0/nifi-security/content/ldap_login_identity_provider.html
 
 
 
 
-##Steps for enabling Authorisation :
+## Steps for enabling Authorisation :
 
 Related Docs :
 From Cloudera : https://docs.cloudera.com/HDPDocuments/HDF3/HDF-3.3.0/nifi-security/content/multi-tenant-authorization.html
@@ -28,7 +28,7 @@ Post making the NIFI cluster secure and authentication enabled, in order to have
 2.  Update property nifi.security.user.authorizer
 
 
-###Step 1 : modify the authorization.xml file 
+### Step 1 : modify the authorization.xml file 
 
 Taking example of petrie Willard blog from above link, the authorisation.xml file will be as below. [ I have highlighted comments in BOLD and Colored and also divided the config file in multiple RED Line ] 
 We Will be implementing composite user groups provider that will provide users with both file-base user group providers where user can manually add users in NIFI UI and also LDAP based user group provider, which will sync the users and groups from LDAP/AD
@@ -146,7 +146,7 @@ Section 6 : This is the section will be already present in the default xml file 
 
 
 
-Step 2  : Update the below property in Ambari to point the authoriser mechanism to use Managed-Authorizer
+### Step 2  : Update the below property in Ambari to point the authoriser mechanism to use Managed-Authorizer
 
     nifi.security.user.authorizer=managed-authorizer
 
