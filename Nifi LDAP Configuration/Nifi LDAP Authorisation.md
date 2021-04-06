@@ -55,7 +55,9 @@ Section 1 : This is the section will be already present in the default xml file 
             {{nifi_ssl_config_content | replace("Node","Initial User")}}
             </userGroupProvider>
 ———————————————————————————————————————————————————
- Section 2 : This is the section added in to the xml file to include the Ldap user group provider. Here there are 2 sub sections . I
+
+
+Section 2 : This is the section added in to the xml file to include the Ldap user group provider. Here there are 2 sub sections . I
  have highlighted the basic properties to be updated in this config in PINK. This config is taken from the example provide in the blog for reference. 
     
     <userGroupProvider>
@@ -91,6 +93,8 @@ Section 1 : This is the section will be already present in the default xml file 
     <property name="Group Member Attribute - Referenced User Attribute"></property>
     </userGroupProvider>
 ———————————————————————————————————————————————————
+
+
 Section 3 : This is the section added in to the xml file to include the composite user group provider, as explained in the blog
 
      <userGroupProvider>
@@ -100,6 +104,8 @@ Section 3 : This is the section added in to the xml file to include the composit
          <property name="User Group Provider 1">ldap-user-group-provider</property>
       </userGroupProvider>
 ———————————————————————————————————————————————————
+
+
 Section 4 : This is the section will be already present in the default xml file in amabri Ui.  You need to only update the property highlighted in PINK
 
             <accessPolicyProvider>
@@ -113,7 +119,8 @@ Section 4 : This is the section will be already present in the default xml file 
             </accessPolicyProvider>
 ———————————————————————————————————————————————————
            
-    Section 5 : This is the section will be already present in the default xml file in Ambari Ui.  You need to only update the property highlighted in PINK   
+
+Section 5 : This is the section will be already present in the default xml file in Ambari Ui.  You need to only update the property highlighted in PINK   
 
            <authorizer>
             <identifier>managed-authorizer</identifier>
@@ -122,6 +129,8 @@ Section 4 : This is the section will be already present in the default xml file 
             </authorizer>
             {% else %}
 ———————————————————————————————————————————————————
+
+
 Section 6 : This is the section will be already present in the default xml file in Ambari Ui.  You do not need to change any statement in this section. 
 
             <authorizer>
