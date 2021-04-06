@@ -27,18 +27,13 @@ From Blog : https://pierrevillard.com/2017/12/22/authorizations-with-ldap-synchr
 
 
 Post making the NIFI cluster secure and authentication enabled, in order to have the NIFI authorisation via LDAP groups and users, we need to perform 2 steps
-1. Modify authorizer xml file
-2. Update property nifi.security.user.authorizer
+1. Modify `authorisation.xml` file
+2. Update property `nifi.security.user.authorizer`
 
 
-### Step 1 : modify the authorization.xml file 
+### Step 1 : modify the authorisation.xml  file 
 
-Taking example of petrie Willard blog from above link, the authorisation.xml file will be as below. [ I have highlighted comments in BOLD and Colored and also divided the config file in multiple RED Line ] 
-We Will be implementing composite user groups provider that will provide users with both file-base user group providers where user can manually add users in NIFI UI and also LDAP based user group provider, which will sync the users and groups from LDAP/AD
-
-
-NOTE : below configuration is taken directly from Ambari 
-
+We Will be implementing composite user groups provider that will provide users with both file-base user group providers where user can manually add users in NIFI UI and also LDAP based user group provider, which will sync the users and groups from LDAP/AD.
 
 ==================================================================================================
          
