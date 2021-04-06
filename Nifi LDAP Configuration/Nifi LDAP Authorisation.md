@@ -1,5 +1,6 @@
 # Steps to Add Ldap/AD groups for NIFI Authorisation
 
+
 ## Prerequisites 
 
 ### Step 1:  
@@ -15,6 +16,8 @@ Related doc : https://docs.cloudera.com/HDPDocuments/HDF3/HDF-3.2.0/nifi-securit
 
 
 
+
+
 ## Steps for enabling Authorisation :
 
 Related Docs :
@@ -25,7 +28,7 @@ From Blog : https://pierrevillard.com/2017/12/22/authorizations-with-ldap-synchr
 
 Post making the NIFI cluster secure and authentication enabled, in order to have the NIFI authorisation via LDAP groups and users, we need to perform 2 steps
 1. Modify authorizer xml file
-2.  Update property nifi.security.user.authorizer
+2. Update property nifi.security.user.authorizer
 
 
 ### Step 1 : modify the authorization.xml file 
@@ -37,9 +40,10 @@ We Will be implementing composite user groups provider that will provide users w
 NOTE : below configuration is taken directly from Ambari 
 
 
-================================================================================================================
+==================================================================================================
          
 ———————————————————————————————————————————————————
+  
   
 Section 1 : This is the section will be already present in the default xml file in Ambari Ui.  You do not need to change any statement in this section. 
 
@@ -151,7 +155,7 @@ Section 6 : This is the section will be already present in the default xml file 
 
             </authorizers>
 ———————————————————————————————————————————————————
-================================================================================================================
+===============================================================================================
 
 
 
@@ -161,7 +165,7 @@ Section 6 : This is the section will be already present in the default xml file 
 
 
 
-Post the above two steps which restart Nifi services.
+- Post the above two steps , you need to restart Nifi services.
 
 Note: you may need to take backup [either rename or move to a different location] of existing Authorization.xml and Users.xml file from location “/var/lib/nifi/conf”, before restart of the Nifi service, for the new users/authorisation changes to be synced, Incase post restart, the changes are not synced or user is facing issue in login to Web UI.
 
